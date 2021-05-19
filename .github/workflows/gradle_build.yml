@@ -16,4 +16,4 @@ jobs:
         name: "Upload Build Artifact"
         with:
           name: "Plugin Artifact"
-          path: "/home/runner/work/hardcore-plugin/hardcore-plugin/build/libs/Hardcore-1.0.0.jar"
+          path: "/home/runner/work/hardcore-plugin/hardcore-plugin/build/libs/Hardcore-*.jar"
