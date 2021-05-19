@@ -1,4 +1,4 @@
-package net.tassia.hardcore.util;
+package net.tassia.util;
 
 /**
  * A version of {@link java.util.function.Consumer} that allows the throwing of exceptions.
@@ -7,6 +7,8 @@ package net.tassia.hardcore.util;
  * @param <E> the exception
  *
  * @see java.util.function.Consumer
+ *
+ * @author Tassilo
  */
 @FunctionalInterface
 public interface ThrowingConsumer<A, E extends Throwable> {

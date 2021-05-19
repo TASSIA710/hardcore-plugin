@@ -1,4 +1,4 @@
-package net.tassia.hardcore.util;
+package net.tassia.util;
 
 /**
  * A version of {@link java.util.function.Function} that allows the throwing of exceptions.
@@ -8,6 +8,8 @@ package net.tassia.hardcore.util;
  * @param <E> the exception
  *
  * @see java.util.function.Function
+ *
+ * @author Tassilo
  */
 @FunctionalInterface
 public interface ThrowingFunction<A, B, E extends Throwable> {
