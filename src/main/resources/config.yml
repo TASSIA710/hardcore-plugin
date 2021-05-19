@@ -1,0 +1,16 @@
+# Hardcore Configuration
+# Version 1.0
+
+Settings:
+  Enabled: "inherited"
+  DefaultLives: 3
+
+Message:
+  OnFirstJoin: "&7[&eHardcore&7] &6This server is running on &ehardcore mode&6. Initially you have &e&l{lives} &6lives. After you have used all your lives, you will be unable to play again."
+  OnJoin: "&7[&eHardcore&7] &6Welcome back! You have &e&l{lives} &6remaining."
+  OnDeath: "&7[&eHardcore&7] &6You have died! You have &e&l{lives} &6remaining."
+  NoLivesRemaining:
+  - "&7[&eHardcore&7] &cConnection closed."
+  - ""
+  - "&cYou have no more lives left and thus cannot play on this server anymore."
+  - "&cYou may contact an administrator to reset your lives."
