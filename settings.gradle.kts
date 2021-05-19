@@ -1,1 +1,1 @@
-rootProject.name = "hardcore-plugin"
+rootProject.name = "Hardcore"
