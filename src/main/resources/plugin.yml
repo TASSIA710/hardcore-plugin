@@ -1,0 +1,6 @@
+main: "net.tassia.hardcore.HardcorePlugin"
+name: "Hardcore"
+author: "Tassilo"
+description: "A minecraft plugin to restrict players to a specific amount of lives."
+version: "1.0.0"
+api-version: "1.16"
