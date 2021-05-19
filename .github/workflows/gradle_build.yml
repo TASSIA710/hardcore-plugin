@@ -1,14 +1,19 @@
-name: Gradle Build
-on: [push]
+name: "Gradle Build"
+on: ["push"]
 
 jobs:
   build:
-    name: Build
-    runs-on: ubuntu-latest
+    name: "Build"
+    runs-on: "ubuntu-latest"
     container:
-      image: gradle
+      image: "gradle"
     steps:
-      - uses: actions/checkout@v2
-        name: Checkout
-      - name: Build & Test with Gradle
+      - uses: "actions/checkout@v2"
+        name: "Checkout"
+      - name: "Build & Test with Gradle"
         run: "gradle build"
+      - uses: "actions/upload-artifact@v2"
+        name: "Upload Build Artifact"
+        with:
+          name: "Hardcore Plugin"
+          path: "$GITHUB_WORKSPACE/build/libs/Hardcore-*.jar"
