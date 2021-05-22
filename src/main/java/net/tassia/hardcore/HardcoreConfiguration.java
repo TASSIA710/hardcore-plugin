@@ -144,7 +144,7 @@ public class HardcoreConfiguration implements IConfiguration {
 		return ChatColor.translateAlternateColorCodes('&', resultCheck)
 			.replace("{prefix}", getPrefix())
 			.replace("{target}", target)
-			.replace("{amount}", Integer.toString(amount));
+			.replace("{lives}", Integer.toString(amount));
 	}
 
 	public String getResultDelete(String target) {
