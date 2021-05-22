@@ -206,7 +206,7 @@ public final class Hardcore {
 		// TODO
 
 		// Update cache
-		setCachedLives(player, lives);
+		setCachedLives(player, current + lives);
 	}
 
 	/**
@@ -232,7 +232,7 @@ public final class Hardcore {
 		// TODO
 
 		// Update cache
-		setCachedLives(player, lives);
+		setCachedLives(player, current - lives);
 	}
 
 
