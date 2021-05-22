@@ -24,10 +24,16 @@ public final class HardcorePlugin extends JavaPlugin {
 	 */
 	private Hardcore hardcore = null;
 
+	/**
+	 * Whether the plugin should be enabled.
+	 */
+	private boolean shouldEnable = true;
+
 	@Override
 	public final void onLoad() {
 		// Initialize
 		getLogger().fine("Initializing...");
+		this.shouldEnable = true;
 		Hardcore hardcore = new Hardcore(this);
 		this.hardcore = hardcore;
 		Hardcore.INSTANCE = hardcore;
@@ -41,15 +47,15 @@ public final class HardcorePlugin extends JavaPlugin {
 			hardcore.config.validate();
 		} catch (IllegalArgumentException ex) {
 			getLogger().log(Level.SEVERE, "Config is configured invalidly.", ex);
-			getServer().getPluginManager().disablePlugin(this);
+			this.shouldEnable = false;
 			return;
 		} catch (IOException ex) {
 			getLogger().log(Level.SEVERE, "An I/O error occurred while loading the configuration.", ex);
-			getServer().getPluginManager().disablePlugin(this);
+			this.shouldEnable = false;
 			return;
 		} catch (InvalidConfigurationException ex) {
 			getLogger().log(Level.SEVERE, "Cannot load configuration because it is not in a valid YAML format.", ex);
-			getServer().getPluginManager().disablePlugin(this);
+			this.shouldEnable = false;
 			return;
 		}
 
@@ -57,12 +63,12 @@ public final class HardcorePlugin extends JavaPlugin {
 		EnabledRule shouldEnable = hardcore.config.enabled;
 		if (shouldEnable == EnabledRule.INHERITED && !getServer().isHardcore()) {
 			getLogger().info("Disabling plugin, as hardcore mode is disabled in server.properties");
-			getServer().getPluginManager().disablePlugin(this);
+			this.shouldEnable = false;
 			return;
 		}
 		if (shouldEnable == EnabledRule.ALWAYS_OFF) {
 			getLogger().info("Disabling plugin, as configured in config.yml");
-			getServer().getPluginManager().disablePlugin(this);
+			this.shouldEnable = false;
 			return;
 		}
 
@@ -76,12 +82,18 @@ public final class HardcorePlugin extends JavaPlugin {
 			hardcore.prepareDatabase();
 		} catch (SQLException ex) {
 			getLogger().log(Level.SEVERE, "Failed to prepare database.", ex);
-			getServer().getPluginManager().disablePlugin(this);
+			this.shouldEnable = false;
 		}
 	}
 
 	@Override
 	public final void onEnable() {
+		// Should enable?
+		if (!this.shouldEnable) {
+			setEnabled(false);
+			return;
+		}
+
 		// Register command
 		getLogger().fine("Registering commands...");
 		PluginCommand cmd = getCommand("hardcore");
