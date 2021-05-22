@@ -247,11 +247,19 @@ public final class Hardcore {
 	public final void prepareDatabase() throws SQLException {
 		transaction((db) -> {
 
-			db.prepareStatement("CREATE TABLE IF NOT EXISTS hardcore_lives ("
-				+ "PlayerID VARCHAR(36) NOT NULL,"
-				+ "Lives INT NOT NULL,"
-				+ "PRIMARY KEY (PlayerID)"
-				+ ");");
+			String[] queries = new String[] {
+				"CREATE TABLE IF NOT EXISTS hardcore_lives (" +
+				"PlayerID VARCHAR(36) NOT NULL," +
+				"Lives INT NOT NULL," +
+				"PRIMARY KEY (PlayerID)" +
+				");"
+			};
+
+			for (String sql : queries) {
+				try (PreparedStatement stmt = db.prepareStatement(sql)) {
+					stmt.executeUpdate();
+				}
+			}
 
 		});
 	}
