@@ -166,7 +166,7 @@ public final class Hardcore {
 				if (affected == 0) {
 					// No rows were affected, so the player is not yet part of the database.
 					// Create the player entry.
-					String sql2 = "INSERT INTO Lives (PlayerID, Lives) VALUES (?, ?);";
+					String sql2 = "INSERT INTO hardcore_lives (PlayerID, Lives) VALUES (?, ?);";
 					try (PreparedStatement stmt2 = db.prepareStatement(sql2)) {
 						stmt2.setString(1, player.toString());
 						stmt2.setInt(2, lives);
