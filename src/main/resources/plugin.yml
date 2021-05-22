@@ -1,6 +1,13 @@
+# Licensed under the GNU GENERAL PUBLIC LICENSE V3
+# (c) 2021 Tassilo <https://github.com/TASSIA710>
+
 main: "net.tassia.hardcore.HardcorePlugin"
 name: "Hardcore"
 author: "Tassilo"
 description: "A minecraft plugin to restrict players to a specific amount of lives."
 version: "#::VERSION::#"
 api-version: "1.16"
+
+commands:
+  hardcore:
+    description: Manages the hardcore plugin.

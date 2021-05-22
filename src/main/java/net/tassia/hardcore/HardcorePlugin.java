@@ -1,5 +1,6 @@
 package net.tassia.hardcore;
 
+import org.bukkit.command.PluginCommand;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -83,7 +84,14 @@ public final class HardcorePlugin extends JavaPlugin {
 	public final void onEnable() {
 		// Register command
 		getLogger().fine("Registering commands...");
-		// TODO
+		PluginCommand cmd = getCommand("hardcore");
+		if (cmd != null) {
+			HardcoreCommand exec = new HardcoreCommand(hardcore);
+			cmd.setExecutor(exec);
+			cmd.setTabCompleter(exec);
+		} else {
+			getLogger().warning("Failed to register command. Did you modify the plugin.yml?");
+		}
 
 		// Hook listeners
 		getLogger().fine("Hooking listeners...");
@@ -141,8 +149,15 @@ public final class HardcorePlugin extends JavaPlugin {
 		if (target.exists()) return;
 
 		// Create target file
-		target.getParentFile().mkdirs();
-		target.createNewFile();
+		File parent = target.getParentFile();
+		if (!parent.exists()) {
+			if (!parent.mkdirs()) {
+				throw new IOException("Failed to create directory: " + parent);
+			}
+		}
+		if (!target.createNewFile()) {
+			throw new IOException("Failed to create file: " + target);
+		}
 
 		// Open streams
 		try (InputStream in = getResource(resource)) {

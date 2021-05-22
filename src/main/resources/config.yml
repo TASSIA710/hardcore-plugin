@@ -5,12 +5,37 @@ Settings:
   Enabled: "inherited"
   DefaultLives: 3
 
+Generic:
+  Prefix: "&7[&eHardcore&7]"
+
 Message:
-  OnFirstJoin: "&7[&eHardcore&7] &6This server is running on &ehardcore mode&6. Initially you have &e&l{lives} &6lives. After you have used all your lives, you will be unable to play again."
-  OnJoin: "&7[&eHardcore&7] &6Welcome back! You have &e&l{lives} &6remaining."
-  OnDeath: "&7[&eHardcore&7] &6You have died! You have &e&l{lives} &6remaining."
+  DeletingData: "{prefix} Deleting data..."
+  FetchingData: "{prefix} Fetching data..."
+  UpdatingData: "{prefix} Updating data..."
+  ResettingData: "{prefix} Resetting data..."
+  RebuildingData: "{prefix} Rebuilding data..."
+  OnFirstJoin: "{prefix} &6This server is running on &ehardcore mode&6. Initially you have &e&l{lives} &6lives. After you have used all your lives, you will be unable to play again."
+  OnJoin: "{prefix} &6Welcome back! You have &e&l{lives} &6remaining."
+  OnDeath: "{prefix} &6You have died! You have &e&l{lives} &6remaining."
   NoLivesRemaining:
-  - "&7[&eHardcore&7] &cConnection closed."
+  - "{prefix} &cConnection closed."
   - ""
   - "&cYou have no more lives left and thus cannot play on this server anymore."
   - "&cYou may contact an administrator to reset your lives."
+
+Result:
+  Check: "{prefix} &e{target} &6has &e&l{lives} &6remaining."
+  Delete: "{prefix} &eYou &adeleted all data associated with &e{target}&a."
+  Give: "{prefix} &eYou &agave &e{amount} &alives to &e{target}&a."
+  Rebuild: "{prefix} &eYou &arebuilt data associated with &e{target}&a."
+  Reset: "{prefix} &eYou &areset &e{target}&as lives."
+  Take: "{prefix} &eYou &atook &e{amount} &alives from &e{target}&a."
+
+Error:
+  InvalidUsage: "{prefix} &cCorrect usage: &o{usage}"
+  PlayerNotFound: "{prefix} &cThis player was not found."
+  PlayerMatchesMultiple: "{prefix} &cMultiple players with name &e{name} &cwere found."
+  SQLError: "{prefix} &cSomething went wrong while querying the database. Check the console for details."
+  PlayerOnlineWhenDeleting: "{prefix} &e{target} &cis currently online. To prevent data corruption you cannot delete data of online players."
+  NotANumber: "{prefix} &e{input} &cis not a valid number."
+  NotAPositiveNumber: "{prefix} &e{input} &cis not a positive number."

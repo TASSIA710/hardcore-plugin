@@ -102,6 +102,50 @@ public final class Hardcore {
 	}
 
 	/**
+	 * Resets the lives of a given player.
+	 *
+	 * @param player the player whose lives to reset
+	 * @throws SQLException if an SQL error occurs
+	 */
+	public final void resetLives(final UUID player) throws SQLException {
+		// Delete data
+		deleteData(player);
+
+		// Get lives of player (to re-create default values)
+		int lives = getLives(player);
+
+		// Is player online?
+		Player ply = Bukkit.getPlayer(player);
+		if (ply != null) {
+			ply.setMetadata("HardcoreLives", new FixedMetadataValue(plugin, lives));
+		}
+	}
+
+	/**
+	 * Deletes all data associated with the player.
+	 *
+	 * @param player the player whose data to delete
+	 * @throws SQLException if an SQL error occurs
+	 */
+	protected final void deleteData(final UUID player) throws SQLException {
+		// Delete from database
+		transaction((db) -> {
+			// Delete from 'hardcore_lives' table
+			String sql = "DELETE FROM hardcore_lives WHERE PlayerID = ?;";
+			try (PreparedStatement stmt = db.prepareStatement(sql)) {
+				stmt.setString(1, player.toString());
+				stmt.executeUpdate();
+			}
+		});
+
+		// Is player online?
+		Player ply = Bukkit.getPlayer(player);
+		if (ply != null) {
+			ply.removeMetadata("HardcoreLives", plugin);
+		}
+	}
+
+	/**
 	 * Updates the cached amount of lives a player has.
 	 *
 	 * @param player the player to update
