@@ -251,7 +251,7 @@ public final class Hardcore {
 				+ "PlayerID VARCHAR(36) NOT NULL,"
 				+ "Lives INT NOT NULL,"
 				+ "PRIMARY KEY (PlayerID)"
-				+ ") ENGINE = InnoDB CHARACTER SET utf8_mb4;");
+				+ ");");
 
 		});
 	}
