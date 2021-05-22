@@ -26,3 +26,7 @@ java {
 tasks.getByName<Test>("test") {
 	useJUnitPlatform()
 }
+
+tasks.getByName<ProcessResources>("processResources") {
+	filter { it.replace("#::VERSION::#", project.version.toString()) }
+}
