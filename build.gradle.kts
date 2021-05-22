@@ -1,5 +1,5 @@
 group = "net.tassia"
-version = "1.0.0-BETA-B1"
+version = "1.0.0-BETA-R1"
 
 plugins {
 	java
