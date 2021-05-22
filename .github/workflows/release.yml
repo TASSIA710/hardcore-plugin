@@ -1,0 +1,25 @@
+name: "Release"
+on: ["release"]
+
+jobs:
+  build:
+    name: "Build"
+    runs-on: "ubuntu-latest"
+    container:
+      image: "gradle"
+    steps:
+      - uses: "actions/checkout@v2"
+        name: "Checkout"
+      - name: "Build & Test with Gradle"
+        run: "gradle build"
+  release:
+    name: "Release"
+    runs-on: "ubuntu-latest"
+    needs: ["build"]
+    steps:
+    - name: "Attach Build Artifacts"
+      uses: "Roang-zero1/github-upload-release-artifacts-action@v2.1.0"
+      with:
+        args: "/home/runner/work/hardcore-plugin/hardcore-plugin/build/libs/"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
