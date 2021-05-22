@@ -53,8 +53,8 @@ public class HardcoreConfiguration implements IConfiguration {
 		this.rebuildingData = "{prefix} Rebuilding data...";
 
 		this.onFirstJoin = "{prefix} &6This server is running on &ehardcore mode&6. Initially you have &e&l{lives} &6lives. After you have used all your lives, you will be unable to play again.";
-		this.onJoin = "{prefix} &6Welcome back! You have &e&l{lives} &6remaining.";
-		this.onDeath = "{prefix} &6You have died! You have &e&l{lives} &6remaining.";
+		this.onJoin = "{prefix} &6Welcome back! You have &e&l{lives} &6lives remaining.";
+		this.onDeath = "{prefix} &6You have died! You have &e&l{lives} &6lives remaining.";
 
 		this.noLivesRemaining = new ArrayList<>();
 		this.noLivesRemaining.add("{prefix} &cConnection closed.");
@@ -62,7 +62,7 @@ public class HardcoreConfiguration implements IConfiguration {
 		this.noLivesRemaining.add("&cYou have no more lives left and thus cannot play on this server anymore.");
 		this.noLivesRemaining.add("&cYou may contact an administrator to reset your lives.");
 
-		this.resultCheck = "{prefix} &e{target} &6has &e&l{lives} &6remaining.";
+		this.resultCheck = "{prefix} &e{target} &6has &e&l{lives} &6lives remaining.";
 		this.resultDelete = "{prefix} &eYou &adeleted all data associated with &e{target}&a.";
 		this.resultGive = "{prefix} &eYou &agave &e{amount} &alives to &e{target}&a.";
 		this.resultRebuild = "{prefix} &eYou &arebuilt data associated with &e{target}&a.";

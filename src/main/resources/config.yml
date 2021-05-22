@@ -15,8 +15,8 @@ Message:
   ResettingData: "{prefix} Resetting data..."
   RebuildingData: "{prefix} Rebuilding data..."
   OnFirstJoin: "{prefix} &6This server is running on &ehardcore mode&6. Initially you have &e&l{lives} &6lives. After you have used all your lives, you will be unable to play again."
-  OnJoin: "{prefix} &6Welcome back! You have &e&l{lives} &6remaining."
-  OnDeath: "{prefix} &6You have died! You have &e&l{lives} &6remaining."
+  OnJoin: "{prefix} &6Welcome back! You have &e&l{lives} &6lives remaining."
+  OnDeath: "{prefix} &6You have died! You have &e&l{lives} &6lives remaining."
   NoLivesRemaining:
   - "{prefix} &cConnection closed."
   - ""
@@ -24,7 +24,7 @@ Message:
   - "&cYou may contact an administrator to reset your lives."
 
 Result:
-  Check: "{prefix} &e{target} &6has &e&l{lives} &6remaining."
+  Check: "{prefix} &e{target} &6has &e&l{lives} &6lives remaining."
   Delete: "{prefix} &eYou &adeleted all data associated with &e{target}&a."
   Give: "{prefix} &eYou &agave &e{amount} &alives to &e{target}&a."
   Rebuild: "{prefix} &eYou &arebuilt data associated with &e{target}&a."
