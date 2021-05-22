@@ -27,6 +27,7 @@ final class PlayerLoginListener implements Listener {
 			lives = hardcore.getLives(ply.getUniqueId());
 		} catch (SQLException ex) {
 			hardcore.plugin.getLogger().log(Level.WARNING, "Failed to fetch data for " + ply.getName(), ex);
+			ply.setMetadata("HardcoreLives", new FixedMetadataValue(hardcore.plugin, Integer.MAX_VALUE));
 			return;
 		}
 
